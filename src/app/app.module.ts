@@ -3,23 +3,48 @@ import {NgModule} from '@angular/core';
 
 import {AppComponent} from './app.component';
 import {FormComponent} from './form/form.component';
-import {AppRoutingModule} from './app.routing.module';
+import {DialogComponent} from './dialog/dialog.component';
 import {HeaderBtnComponent} from './header-btn/header-btn.component';
-import {MatCardModule} from '@angular/material/card';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {AppRoutingModule} from './app.routing.module';
 
+import {MatCardModule} from '@angular/material/card';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
+import {MatRadioModule} from '@angular/material/radio';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatNativeDateModule} from '@angular/material';
+import {MatDialogModule} from '@angular/material/dialog';
+
+const modules = [
+  ReactiveFormsModule,
+  MatCardModule,
+  MatFormFieldModule,
+  MatInputModule,
+  MatSelectModule,
+  FormsModule,
+  MatRadioModule,
+  MatSlideToggleModule,
+  MatDatepickerModule,
+  MatNativeDateModule,
+  MatDialogModule
+];
 
 @NgModule({
   declarations: [
     AppComponent,
     FormComponent,
-    HeaderBtnComponent
+    HeaderBtnComponent,
+    DialogComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MatCardModule
+    modules
   ],
   providers: [],
   bootstrap: [AppComponent]

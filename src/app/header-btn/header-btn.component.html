@@ -1,11 +1,8 @@
-<div class="shadow p-3 mb-5 bg-white rounded m-5 text-center">
-  <button type="button" class="btn btn-lg px-5 my-4" [routerLink]="['form']">
-    <p>Go to form
-    </p>
-
-  </button>
-
-</div>
-<mat-card>
-
+<mat-card class="m-4">
+  <mat-card-actions class="text-center">
+    <button type="button" class="btn btn-lg px-5 m-auto" [routerLink]="['form']">
+      <a class="p-3">Go to form</a>
+    </button>
+  </mat-card-actions>
+  <router-outlet></router-outlet>
 </mat-card>

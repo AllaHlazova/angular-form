@@ -7,11 +7,6 @@ import {HeaderBtnComponent} from './header-btn/header-btn.component';
 const ROUTERS: Route[] = [
   {
     path: '',
-    redirectTo: 'header',
-    pathMatch: 'full'
-  },
-  {
-    path: 'header',
     component: HeaderBtnComponent,
   },
   {
@@ -26,3 +21,5 @@ const ROUTERS: Route[] = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
+
+

@@ -1,3 +1,122 @@
-<div class="form-group">
-form work
-</div>
+<!--<div class="m-5" style="border:2px solid lightblue; padding: 10px; max-width: 50%;">-->
+<!--  <div class="form-group d-flex">-->
+<!--    <input type="text" class="w-50" placeholder="First Name" name="firstName">-->
+<!--    <input type="text" class="w-50" placeholder="Last Name" name="lastName">-->
+<!--  </div>-->
+<!--  <div class="form-group">-->
+<!--    <input type="text" placeholder="Address" name="address">-->
+<!--  </div>-->
+<!--  <div class="form-group">-->
+<!--    <input type="text" placeholder="Date of birth" name="address">-->
+<!--  </div>-->
+<!--<div class="d-flex">-->
+<!--  <div class="form-group w-50" style="border: 2px solid red">-->
+<!--    <label for="opt1" class="radio b">Male-->
+<!--      <input type="radio" name="rdo" id="opt1" class="hidden"/>-->
+<!--&lt;!&ndash;      <span class="label"></span>&ndash;&gt;-->
+<!--    </label>-->
+
+<!--    <label for="opt2" class="radio b">Female-->
+<!--<input type="radio" name="rdo" id="opt2" class="hidden"/>-->
+<!--&lt;!&ndash;      <span class="label"></span>&ndash;&gt;-->
+<!--</label>-->
+<!--</div>-->
+
+<!--<div class="form-group w-50" >-->
+<!--  <input type="text" placeholder="Select Blog" name="selectBlog">-->
+<!--</div>-->
+<!--</div>-->
+
+<!--<div class="form-group">-->
+<!--  <input type="text" placeholder="Email" name="email">-->
+<!--</div>-->
+
+<!--<div>add radio btn</div>-->
+
+<!--&lt;!&ndash;   two btn&ndash;&gt;-->
+<!--<div>-->
+<!--  <button type="button" class="btn btn-lg px-5 m-auto">-->
+<!--    <a class="p-3">Submit</a>-->
+<!--  </button>-->
+<!--</div>-->
+<!--<div>-->
+<!--  <button type="button" class="btn btn-lg px-5 m-auto">-->
+<!--    <a class="p-3">Cancel</a>-->
+<!--  </button>-->
+<!--</div>-->
+<!--</div>-->
+<mat-card class="w-50 m-main">
+  <div class="example-container">
+<!-- First Name-->
+    <div class="d-flex">
+      <mat-form-field class="w-50 p-2">
+        <input matInput placeholder="First Name">
+      </mat-form-field>
+<!-- Last Name-->
+      <mat-form-field class="w-50 p-2">
+        <input matInput placeholder="Last Name">
+      </mat-form-field>
+    </div>
+<!--    Address-->
+    <div>
+      <mat-form-field class="p-2 w-100">
+        <input matInput placeholder="Address">
+      </mat-form-field>
+    </div>
+<!--    Date of birth-->
+    <mat-form-field class="p-2 w-100">
+      <input matInput [matDatepicker]="picker" placeholder="Date of birth">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+<!--    <div>-->
+<!--      <mat-form-field class="p-2 w-100">-->
+<!--        <input matInput placeholder="Date of birth">-->
+<!--        <div style="text-align: end">-->
+<!--          <div class="material-icons">calendar_today</div>-->
+<!--        </div>-->
+<!--      </mat-form-field>-->
+<!--    </div>-->
+
+<!--    Select-->
+    <div class="d-flex">
+      <div class="w-50">
+        <mat-radio-group aria-label="Select an option">
+          <p>Gender</p>
+          <mat-radio-button value="male" class="p-2" color="primary">Male</mat-radio-button>
+          <mat-radio-button value="female" class="p-2">Female</mat-radio-button>
+        </mat-radio-group>
+      </div>
+      <div class="w-50">
+        <mat-form-field class="w-100 pt-4">
+          <mat-select placeholder="Select Blog">
+            <mat-option value="option">Option111</mat-option>
+            <mat-option value="option">Option222</mat-option>
+            <mat-option value="option">Option333</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+<!--    Email-->
+    <div class="p-2">
+      <mat-form-field class="w-100">
+        <input matInput placeholder="Email">
+        <mat-hint>use like : demo@demo.com</mat-hint>
+      </mat-form-field>
+    </div>
+<!--    toggle-->
+    <div>
+      <mat-slide-toggle>Accept Terms & Conditions</mat-slide-toggle>
+    </div>
+<!--btn-->
+    <div class="text-center p-2">
+      <button type="button" class="btn px-2 mr-5 mt-2">
+        <a class="p-3">Submit</a>
+      </button>
+      <button type="button" class="btn px-2 mt-2" (click)="openDialog()">
+        <a class="p-3">Cancel</a>
+      </button>
+    </div>
+  </div>
+</mat-card>
