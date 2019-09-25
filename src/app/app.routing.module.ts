@@ -7,6 +7,11 @@ import {HeaderBtnComponent} from './header-btn/header-btn.component';
 const ROUTERS: Route[] = [
   {
     path: '',
+    redirectTo: 'open-form',
+    pathMatch: 'full'
+  },
+  {
+    path: 'open-form',
     component: HeaderBtnComponent,
   },
   {

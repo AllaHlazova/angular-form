@@ -1,0 +1,28 @@
+button{
+  outline: none;
+  border: none;
+  border-radius: 1px;
+}
+button:active,
+button:hover{
+  border: none;
+  outline: none;
+}
+.btn-yes{
+  color: #FFD700;
+
+}
+.btn-yes:hover{
+  background-color: #ffd7002e;
+}
+.btn-yes:active{
+
+}
+.btn-no{
+  color: #5F04B4;
+  background-color: white;
+}
+
+.btn-no:hover{
+  background-color: #5f04b444;
+}
