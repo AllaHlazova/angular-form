@@ -1,6 +1,8 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { HeaderBtnComponent } from './header-btn.component';
+import {HeaderBtnComponent} from './header-btn.component';
+import {RouterTestingModule} from '@angular/router/testing';
+import {MatCardModule} from '@angular/material';
 
 describe('HeaderBtnComponent', () => {
   let component: HeaderBtnComponent;
@@ -8,9 +10,12 @@ describe('HeaderBtnComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ HeaderBtnComponent ]
+      declarations: [HeaderBtnComponent],
+      imports: [
+        RouterTestingModule,
+        MatCardModule ]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

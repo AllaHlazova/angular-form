@@ -1,9 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {DialogComponent} from '../dialog/dialog.component';
 import {MatDialog} from '@angular/material';
-import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {AbstractControl, FormControl, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
-
+import {MyValidators} from '../services/my.validators';
 
 @Component({
   selector: 'app-form',
@@ -12,45 +12,92 @@ import {Router} from '@angular/router';
 })
 export class FormComponent implements OnInit {
 
-  public form: FormGroup = new FormGroup({
-    firstName: new FormControl('', [Validators.minLength(2), Validators.required]),
-    lastName: new FormControl('', [Validators.minLength(3), Validators.required]),
-    address: new FormControl('', [Validators.minLength(5), Validators.required]),
-    date:  new FormControl('', [Validators.minLength(5), Validators.required])
-  });
+  constructor(public dialog: MatDialog, public router: Router) {
+  }
 
-  // public nameControl: FormControl;
+  public form: FormGroup;
 
-  constructor(public dialog: MatDialog, public router: Router) {}
-
+  // dialog
   openDialog(): void {
     const dialogRef = this.dialog.open(DialogComponent, {
-      width: '450px',
+      width: '450px'
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      // console.log('The dialog was closed');
       console.log(result);
     });
   }
 
-  // redirect to first router
-  cancel() {
-    this.router.navigate(['']);
-  }
-
   ngOnInit() {
-    this.nameControl = new FormControl('john');
-    firstName.
+    const onlyLetters = Validators.pattern(/^[а-яa-z]+$/i);
 
-    // function myValidator(formControl: FormControl) {
-    //   if (formControl.value.lenght < 3) {
-    //     return {myValidator: { message: "rqwqeq" }};
-    //   } else {
-    //     return null;
-    //   }
-    // }
+    this.form = new FormGroup({
+      firstName: new FormControl('', [Validators.minLength(2), Validators.required, onlyLetters,]),
+      lastName: new FormControl('', [Validators.minLength(3), Validators.required, onlyLetters]),
+      address: new FormControl('', [Validators.minLength(8), Validators.required]),
+      dateOfBirth: new FormControl('', [Validators.required]),
+      gender: new FormControl('', Validators.required),
+      select: new FormControl('', Validators.required),
+      email: new FormControl('', [Validators.email, Validators.required,
+        MyValidators.forbiddenEmail]),
+      toggle: new FormControl('', Validators.required)
+    });
   }
 
+
+  myFunc(control: AbstractControl): string {
+    let errorText = '';
+    for (const value in control.errors) {
+      // console.log('errors-' + control.errors);
+
+      switch (value) {
+        case 'minlength':
+          errorText = `Expected length more ${control.errors.minlength.requiredLength}`;
+          // console.log(control.errors.minlength);
+          break;
+        case 'required':
+          errorText = 'You must fill in the field';
+          break;
+        case 'pattern':
+          errorText = `You must use only letters`;
+          break;
+        case 'email':
+          errorText = `Enter correct email`;
+          break;
+        case 'bannedEmail':
+          errorText = `The email ${control.value} banned`;
+          break;
+      }
+    }
+    return errorText;
+  }
+
+  submit() {
+    this.form.markAsDirty();
+    this.form.markAllAsTouched();
+    this.form.updateValueAndValidity();
+
+    if (this.form.invalid) {
+      return;
+    } else {
+      // Clear all form
+      this.form.reset();
+    }
+  }
 }
+
+// return alert('form save');
+// if (this.form.valid) {
+//   console.log('2222');
+//   console.log(this.form);
+//
+//   console.log('Form: ', this.form);
+//   const formData = {...this.form.value};
+//
+//   console.log('FormData: ', formData);
+// } else {
+//   console.log('333');
+//   console.log('form is invalid');
+
+
 

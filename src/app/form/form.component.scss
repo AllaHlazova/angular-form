@@ -5,6 +5,9 @@ button{
   margin: auto;
   margin-top: 5rem;
 }
+.max-width{
+  max-width: 30rem;
+}
 .btn{
   background-color: lightgrey;
   color: gray;
@@ -14,3 +17,8 @@ button{
   background-color: mediumpurple;
   color: white;
 }
+//input{
+//  &.ng-valid{
+//    border: 1px solid green;
+//  }
+//}

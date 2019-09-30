@@ -12,29 +12,30 @@ import {AppRoutingModule} from './app.routing.module';
 import {MatCardModule} from '@angular/material/card';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatInputModule} from '@angular/material/input';
+// import {MatInputModule} from '@angular/material/input';
+import { MatInputModule } from '@angular/material';
 import {MatSelectModule} from '@angular/material/select';
 import {MatRadioModule} from '@angular/material/radio';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material';
-import {MatDialogModule} from '@angular/material/dialog';
+import {MatDialogModule, MatDialogRef} from '@angular/material/dialog';
 import {MatButtonModule} from '@angular/material/button';
 
-// const modules = [
-//   ReactiveFormsModule,
-//   MatCardModule,
-//   MatFormFieldModule,
-//   MatInputModule,
-//   MatSelectModule,
-//   FormsModule,
-//   MatRadioModule,
-//   MatSlideToggleModule,
-//   MatDatepickerModule,
-//   MatNativeDateModule,
-//   MatDialogModule,
-//   MatButtonModule
-// ];
+const modules = [
+  ReactiveFormsModule,
+  MatCardModule,
+  MatFormFieldModule,
+  MatInputModule,
+  MatSelectModule,
+  FormsModule,
+  MatRadioModule,
+  MatSlideToggleModule,
+  MatDatepickerModule,
+  MatNativeDateModule,
+  MatDialogModule,
+  MatButtonModule,
+];
 
 @NgModule({
   declarations: [
@@ -47,19 +48,33 @@ import {MatButtonModule} from '@angular/material/button';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    // modules,
-    ReactiveFormsModule,
-    MatCardModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatSelectModule,
-    FormsModule,
-    MatRadioModule,
-    MatSlideToggleModule,
-    MatDatepickerModule,
-    MatNativeDateModule,
-    MatDialogModule,
-    MatButtonModule,
+    modules,
+    // ReactiveFormsModule,
+    // MatCardModule,
+    // MatFormFieldModule,
+    // MatInputModule,
+    // MatSelectModule,
+    // FormsModule,
+    // MatRadioModule,
+    // MatSlideToggleModule,
+    // MatDatepickerModule,
+    // MatNativeDateModule,
+    // MatDialogModule,
+    // MatButtonModule,
+  ],
+  exports: [
+    // MatCardModule,
+    //     // MatFormFieldModule,
+    //     // MatInputModule,
+    //     // MatSelectModule,
+    //     // FormsModule,
+    //     // MatRadioModule,
+    //     // MatSlideToggleModule,
+    //     // MatDatepickerModule,
+    //     // MatNativeDateModule,
+    //     // MatDialogModule,
+    //     // MatButtonModule,
+    modules
   ],
   providers: [],
   bootstrap: [AppComponent],

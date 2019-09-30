@@ -1,77 +1,96 @@
-<mat-card class="w-50 m-main">
+<mat-card class="m-main max-width">
   <div class="example-container" [formGroup]="form">
+
 <!-- First Name-->
     <div class="d-flex">
       <mat-form-field class="w-50 p-2">
         <input matInput placeholder="First Name" required formControlName="firstName">
         <mat-error *ngIf="form.controls.firstName.invalid">
-          {{ form.controls.firstName.errors?.minlength ? 'enter more than 2 characters' : '' }}
-          {{ form.controls.firstName.errors?.required ? 'the field must be filled' : '' }}
+          {{ myFunc(form.controls.firstName) }}
         </mat-error>
       </mat-form-field>
+
 <!-- Last Name-->
       <mat-form-field class="w-50 p-2">
         <input matInput placeholder="Last Name" required formControlName="lastName">
         <mat-error *ngIf="form.controls.lastName.invalid">
-          {{ form.controls.lastName.errors?.minlength ? 'enter more than 3 characters' : '' }}
-          {{ form.controls.lastName.errors?.required ? 'the field must be filled' : '' }}
+          {{ myFunc(form.controls.lastName) }}
         </mat-error>
       </mat-form-field>
     </div>
+
 <!--    Address-->
     <div>
       <mat-form-field class="p-2 w-100">
         <input matInput placeholder="Address" required formControlName="address">
         <mat-error *ngIf="form.controls.address.invalid">
-          {{ form.controls.address.errors?.minlength ? 'enter more than 5 characters' : '' }}
-          {{ form.controls.address.errors?.required ? 'the field must be filled' : '' }}
+          {{ myFunc(form.controls.address) }}
         </mat-error>
       </mat-form-field>
     </div>
-<!--    Date of birth-->
+
+<!--  Date of birth-->
     <mat-form-field class="p-2 w-100">
-      <input matInput [matDatepicker]="picker" placeholder="Date of birth" required>
+      <input matInput [matDatepicker]="picker" placeholder="Date of birth" required formControlName="dateOfBirth">
+      <mat-error *ngIf="form.controls.dateOfBirth.invalid">
+        {{ myFunc(form.controls.dateOfBirth) }}
+      </mat-error>
       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
       <mat-datepicker #picker></mat-datepicker>
     </mat-form-field>
-<!--    Select-->
+<!--  Select-->
     <div class="d-flex">
       <div class="w-50">
-        <mat-radio-group aria-label="Select an option" required>
-          <p>Gender</p>
-          <mat-radio-button value="male" class="p-2" color="primary">Male</mat-radio-button>
-          <mat-radio-button value="female" class="p-2">Female</mat-radio-button>
-        </mat-radio-group>
+        <p>Gender</p>
+<!--        <mat-form-field>-->
+          <mat-radio-group aria-label="Gender" formControlName="gender" required>
+            <mat-radio-button value="male" class="p-2" color="primary">Male</mat-radio-button>
+            <mat-radio-button value="female" class="p-2" >Female</mat-radio-button>
+            <mat-error *ngIf="form.controls.gender.touched && form.controls.gender.invalid">
+              {{ myFunc(form.controls.gender) }}
+            </mat-error>
+          </mat-radio-group>
+<!--        </mat-form-field>-->
       </div>
       <div class="w-50">
         <mat-form-field class="w-100 pt-4">
-          <mat-select placeholder="Select Blog" required>
+          <mat-label>Select Blog</mat-label>
+          <mat-select   formControlName="select" required>
             <mat-option value="option">Option111</mat-option>
             <mat-option value="option">Option222</mat-option>
             <mat-option value="option">Option333</mat-option>
           </mat-select>
+          <mat-error *ngIf="form.controls.select.touched && form.controls.select.invalid">
+            {{ myFunc(form.controls.select) }}
+          </mat-error>
         </mat-form-field>
       </div>
+
     </div>
-<!--    Email-->
+<!--  Email-->
     <div class="p-2">
       <mat-form-field class="w-100">
-        <input matInput placeholder="Email" required>
+        <input matInput placeholder="Email" required formControlName="email">
+        <mat-error *ngIf="form.controls.email.invalid">
+          {{ myFunc(form.controls.email)}}
+        </mat-error>
         <mat-hint>use like : demo@demo.com</mat-hint>
       </mat-form-field>
     </div>
-<!--    toggle-->
+<!-- toggle-->
     <div>
-      <mat-slide-toggle required>Accept Terms & Conditions</mat-slide-toggle>
+      <mat-slide-toggle color="warn" required>Accept Terms & Conditions</mat-slide-toggle>
+      <mat-error *ngIf="form.controls.select.touched && form.controls.select.invalid">
+        {{ myFunc(form.controls.toggle) }}
+      </mat-error>
     </div>
 <!--btn-->
     <div class="text-center p-2">
-      <button type="button" class="btn px-2 mr-5 mt-2" mat-button (click)="openDialog()">
+      <button type="button" class="btn px-2 mr-5 mt-2" mat-button (click)="submit()">
         <a class="p-3">Submit</a>
       </button>
-      <button type="button" class="btn px-2 mt-2" mat-button (click)="cancel()">
+      <button type="button" class="btn px-2 mt-2" mat-button (click)="openDialog()">
         <a class="p-3">Cancel</a>
-<!--        <router-outlet></router-outlet>-->
       </button>
     </div>
   </div>
