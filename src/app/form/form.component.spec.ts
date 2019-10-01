@@ -1,7 +1,7 @@
-import {async, ComponentFixture, inject, TestBed} from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { FormComponent } from './form.component';
-import {FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
+import {FormComponent} from './form.component';
+import {FormControl, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
 import {
   MatButtonModule,
   MatCardModule,
@@ -20,11 +20,10 @@ import {of} from 'rxjs';
 describe('FormComponent', () => {
   let component: FormComponent;
   let fixture: ComponentFixture<FormComponent>;
-  // let onlyLetters: FormControl;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ FormComponent ],
+      declarations: [FormComponent],
       imports: [
         BrowserAnimationsModule,
         RouterTestingModule,
@@ -42,7 +41,7 @@ describe('FormComponent', () => {
         MatButtonModule
       ]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
@@ -55,58 +54,55 @@ describe('FormComponent', () => {
     expect(component).toBeTruthy();
   });
 
-
-  // it('should create', () => {
-  //   expect(component).toBeTruthy();
-  // });
-  //
-  // it('should create ListService', inject([ListService], (service: ListService) => {
-  //   expect(component).toBeTruthy();
-  // }));
-  //
-  // it('should get info',
-  //   inject([ListService],
-  //     (service: ListService) => {
-  //       const info = [{
-  //         title: 'Pasturia',
-  //         subTitle: 'Emma Brennan',
-  //         date: 1558347089,
-  //         daysLeft: 2,
-  //         isInfoCard: true
-  //       }];
-  //
-  //       spyOn(service, 'getData').and.returnValue(of(info));
-  //       component.ngOnInit();
-  //       expect(component.cardList).toEqual(info);
-  //     }));
-
-
-
-  it('should create', () => {
-    const form = new FormGroup({
-      fName: new FormControl('111', [Validators.minLength(2), Validators.required]),
-      lastName: new FormControl('', [Validators.minLength(3), Validators.required,]),
-      address: new FormControl('', [Validators.minLength(8), Validators.required]),
-      dateOfBirth: new FormControl('', [Validators.required]),
-      gender: new FormControl('', Validators.required),
-      select: new FormControl('', Validators.required),
-      email: new FormControl('', [Validators.email, Validators.required, MyValidators.forbiddenEmail]),
-      toggle: new FormControl('', Validators.required)
-    });
-    // const fName = 'Bob';
-    // const lastName = 'Williams';
-    component.myFunc(form.controls.fName);
-    component.myFunc(form.controls.lastName);
-    component.myFunc(form.controls.address);
-    component.myFunc(form.controls.dateOfBirth);
-    component.myFunc(form.controls.gender);
-    component.myFunc(form.controls.select);
-    component.myFunc(form.controls.email);
-    component.myFunc(form.controls.toggle);
-
-    const fName = 'Bob';
-    const lastName = 'Williams' ;
-
+  it('should check function to onlyLetters validator', () => {
+    const a = new FormControl('1111', [MyValidators.onlyLetters]);
+    const result = component.myFunc(a);
+    expect(result).toEqual('You must use only letters and do not use specific symbols');
   });
+
+  it('should check FormControl is required', () => {
+    const a = new FormControl('', [Validators.required]);
+    a.markAsDirty();
+    a.markAsTouched();
+    a.updateValueAndValidity();
+    const result = component.myFunc(a);
+    expect(result).toEqual('You must fill in the field');
+  });
+// придет ошибка, пустая.это верно, потому что у нас нет такой ошибки в функции среди других ошибок(value).
+  it('should return empty error value', () => {
+    const a = new FormControl('12345678901', [Validators.maxLength(10)]);
+    a.markAsDirty();
+    a.markAsTouched();
+    a.updateValueAndValidity();
+    const result = component.myFunc(a);
+    console.log(a.errors);
+    expect(result).toEqual('');
+  });
+
+  it('should check FormControl on minLength', () => {
+    const a = new FormControl('t', [Validators.minLength(3)]);
+    const result = component.myFunc(a);
+    a.markAsDirty();
+    a.markAsTouched();
+    a.updateValueAndValidity();
+    const valueUser = a.errors.minlength.requiredLength;
+    expect(result).toEqual(`Expected length more ${valueUser}`);
+  });
+
+  it('should check FormControl on minLength', () => {
+    const a = new FormControl('t', [Validators.minLength(3)]);
+    const result = component.myFunc(a);
+
+
+    a.markAsDirty();
+    a.markAsTouched();
+    a.updateValueAndValidity();
+
+
+    const valueUser = a.errors.minlength.requiredLength;
+    expect(result).toEqual(`Expected length more ${valueUser}`);
+  });
+
+
 
 });

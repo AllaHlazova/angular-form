@@ -29,11 +29,15 @@ export class FormComponent implements OnInit {
   }
 
   ngOnInit() {
-    const onlyLetters = Validators.pattern(/^[а-яa-z]+$/i);
+    // const onlyLetters = Validators.pattern(/^[а-яa-z]+$/i);
 
     this.form = new FormGroup({
-      firstName: new FormControl('', [Validators.minLength(2), Validators.required, onlyLetters,]),
-      lastName: new FormControl('', [Validators.minLength(3), Validators.required, onlyLetters]),
+      firstName: new FormControl('', [Validators.minLength(2), Validators.required,
+        MyValidators.onlyLetters
+      ]),
+      lastName: new FormControl('', [Validators.minLength(3), Validators.required,
+        MyValidators.onlyLetters
+      ]),
       address: new FormControl('', [Validators.minLength(8), Validators.required]),
       dateOfBirth: new FormControl('', [Validators.required]),
       gender: new FormControl('', Validators.required),
@@ -53,13 +57,13 @@ export class FormComponent implements OnInit {
       switch (value) {
         case 'minlength':
           errorText = `Expected length more ${control.errors.minlength.requiredLength}`;
-          // console.log(control.errors.minlength);
+          console.log(control.errors.minlength);
           break;
         case 'required':
           errorText = 'You must fill in the field';
           break;
         case 'pattern':
-          errorText = `You must use only letters`;
+          errorText = `You must use only letters and do not use specific symbols`;
           break;
         case 'email':
           errorText = `Enter correct email`;
