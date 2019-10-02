@@ -16,8 +16,6 @@ export class DialogComponent implements OnInit {
   ngOnInit() {
   }
 
-  // redirect to first router
-  //   this.router.navigate(['']);
   out() {
     this.router.navigate(['']);
     this.dialogRef.close('form closed user`s');

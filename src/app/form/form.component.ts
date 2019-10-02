@@ -29,15 +29,12 @@ export class FormComponent implements OnInit {
   }
 
   ngOnInit() {
-    // const onlyLetters = Validators.pattern(/^[а-яa-z]+$/i);
 
     this.form = new FormGroup({
-      firstName: new FormControl('', [Validators.minLength(2), Validators.required,
-        MyValidators.onlyLetters
-      ]),
-      lastName: new FormControl('', [Validators.minLength(3), Validators.required,
-        MyValidators.onlyLetters
-      ]),
+      firstName: new FormControl('', [Validators.minLength(2),
+        Validators.required, MyValidators.onlyLetters]),
+      lastName: new FormControl('', [Validators.minLength(3),
+        Validators.required, MyValidators.onlyLetters]),
       address: new FormControl('', [Validators.minLength(8), Validators.required]),
       dateOfBirth: new FormControl('', [Validators.required]),
       gender: new FormControl('', Validators.required),
@@ -52,12 +49,9 @@ export class FormComponent implements OnInit {
   myFunc(control: AbstractControl): string {
     let errorText = '';
     for (const value in control.errors) {
-      // console.log('errors-' + control.errors);
-
       switch (value) {
         case 'minlength':
           errorText = `Expected length more ${control.errors.minlength.requiredLength}`;
-          console.log(control.errors.minlength);
           break;
         case 'required':
           errorText = 'You must fill in the field';
@@ -89,19 +83,6 @@ export class FormComponent implements OnInit {
     }
   }
 }
-
-// return alert('form save');
-// if (this.form.valid) {
-//   console.log('2222');
-//   console.log(this.form);
-//
-//   console.log('Form: ', this.form);
-//   const formData = {...this.form.value};
-//
-//   console.log('FormData: ', formData);
-// } else {
-//   console.log('333');
-//   console.log('form is invalid');
 
 
 

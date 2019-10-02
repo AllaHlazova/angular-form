@@ -11,9 +11,12 @@ export class MyValidators {
   }
 
   static onlyLetters(control: FormControl): { [key: string]: string } {
-    if (control.value.match(/^\d+$|[-!$%^&*()_+|~=`{}\[\]:";'<>?,.\/]/)) {
-      return {pattern: ''};
+    if (control.value) {
+      if (control.value.match(/^\d+$|[-!$%^&*()_+|~=`{}\[\]:";'<>?,.\/]/)) {
+        return {pattern: ''};
+      }
+      return null;
     }
-    return null;
   }
+
 }

@@ -19,7 +19,7 @@
       </mat-form-field>
     </div>
 
-<!--    Address-->
+<!--  Address-->
     <div>
       <mat-form-field class="p-2 w-100">
         <input matInput placeholder="Address" required formControlName="address">
@@ -38,35 +38,34 @@
       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
       <mat-datepicker #picker></mat-datepicker>
     </mat-form-field>
+
 <!--  Select-->
     <div class="d-flex">
       <div class="w-50">
         <p>Gender</p>
-<!--        <mat-form-field>-->
           <mat-radio-group aria-label="Gender" formControlName="gender" required>
             <mat-radio-button value="male" class="p-2" color="primary">Male</mat-radio-button>
-            <mat-radio-button value="female" class="p-2" >Female</mat-radio-button>
+            <mat-radio-button value="female" class="p-2">Female</mat-radio-button>
             <mat-error *ngIf="form.controls.gender.touched && form.controls.gender.invalid">
               {{ myFunc(form.controls.gender) }}
             </mat-error>
           </mat-radio-group>
-<!--        </mat-form-field>-->
       </div>
       <div class="w-50">
         <mat-form-field class="w-100 pt-4">
           <mat-label>Select Blog</mat-label>
-          <mat-select   formControlName="select" required>
-            <mat-option value="option">Option111</mat-option>
-            <mat-option value="option">Option222</mat-option>
-            <mat-option value="option">Option333</mat-option>
+          <mat-select formControlName="select" required>
+            <mat-option value="option1">Option1</mat-option>
+            <mat-option value="option2">Option2</mat-option>
+            <mat-option value="option3">Option3</mat-option>
           </mat-select>
           <mat-error *ngIf="form.controls.select.touched && form.controls.select.invalid">
             {{ myFunc(form.controls.select) }}
           </mat-error>
         </mat-form-field>
       </div>
-
     </div>
+
 <!--  Email-->
     <div class="p-2">
       <mat-form-field class="w-100">
@@ -77,13 +76,15 @@
         <mat-hint>use like : demo@demo.com</mat-hint>
       </mat-form-field>
     </div>
+
 <!-- toggle-->
     <div>
-      <mat-slide-toggle color="warn" required>Accept Terms & Conditions</mat-slide-toggle>
-      <mat-error *ngIf="form.controls.select.touched && form.controls.select.invalid">
+      <mat-slide-toggle color="warn" required formControlName="toggle">Accept Terms & Conditions</mat-slide-toggle>
+      <mat-error *ngIf="form.controls.toggle.touched && form.controls.toggle.invalid">
         {{ myFunc(form.controls.toggle) }}
       </mat-error>
     </div>
+
 <!--btn-->
     <div class="text-center p-2">
       <button type="button" class="btn px-2 mr-5 mt-2" mat-button (click)="submit()">

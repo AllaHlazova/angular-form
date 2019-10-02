@@ -15,8 +15,6 @@ describe('DialogComponent', () => {
       declarations: [ DialogComponent ],
       imports: [
         MatDialogModule,
-        // MatDialog,
-        // MatDialogRef,
         BrowserAnimationsModule,
         RouterTestingModule,
         BrowserDynamicTestingModule

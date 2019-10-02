@@ -15,7 +15,6 @@ import {
 import {RouterTestingModule} from '@angular/router/testing';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MyValidators} from '../services/my.validators';
-import {of} from 'rxjs';
 
 describe('FormComponent', () => {
   let component: FormComponent;
@@ -50,7 +49,7 @@ describe('FormComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('should create component', () => {
     expect(component).toBeTruthy();
   });
 
@@ -68,14 +67,14 @@ describe('FormComponent', () => {
     const result = component.myFunc(a);
     expect(result).toEqual('You must fill in the field');
   });
-// придет ошибка, пустая.это верно, потому что у нас нет такой ошибки в функции среди других ошибок(value).
+
   it('should return empty error value', () => {
     const a = new FormControl('12345678901', [Validators.maxLength(10)]);
     a.markAsDirty();
     a.markAsTouched();
     a.updateValueAndValidity();
     const result = component.myFunc(a);
-    console.log(a.errors);
+    // console.log(a.errors);
     expect(result).toEqual('');
   });
 
@@ -89,20 +88,60 @@ describe('FormComponent', () => {
     expect(result).toEqual(`Expected length more ${valueUser}`);
   });
 
-  it('should check FormControl on minLength', () => {
-    const a = new FormControl('t', [Validators.minLength(3)]);
-    const result = component.myFunc(a);
-
-
+  it('should check FormControl on forbidden email', () => {
+    const a = new FormControl('demo@demo.com', [MyValidators.forbiddenEmail]);
     a.markAsDirty();
     a.markAsTouched();
     a.updateValueAndValidity();
-
-
-    const valueUser = a.errors.minlength.requiredLength;
-    expect(result).toEqual(`Expected length more ${valueUser}`);
+    const result = component.myFunc(a);
+    expect(result).toEqual(`The email ${a.value} banned`);
   });
 
+  it('should check FormControl is email', () => {
+    const a = new FormControl('eererer', [Validators.email]);
+    a.markAsDirty();
+    a.markAsTouched();
+    a.updateValueAndValidity();
+    const result = component.myFunc(a);
+    expect(result).toEqual('Enter correct email');
+  });
 
+  it('should create form', () => {
+    component.ngOnInit();
 
+    component.form.markAsDirty();
+    component.form.markAsTouched();
+    component.form.updateValueAndValidity();
+    // check form on valid
+    expect(component.form.valid).toBeFalsy();
+    // fill in form field
+    component.form.controls.firstName.setValue('John');
+    component.form.controls.lastName.setValue('Williams');
+    component.form.controls.address.setValue('21 Mercer St, New York, NY 10013, US');
+    component.form.controls.dateOfBirth.setValue('10/1/1989');
+    component.form.controls.gender.setValue('male');
+    component.form.controls.select.setValue('option1');
+    component.form.controls.email.setValue('john@mail.com');
+    component.form.controls.toggle.setValue(true);
+    // check valid
+    expect(component.form.controls.firstName.valid).toBeTruthy();
+    expect(component.form.controls.lastName.valid).toBeTruthy();
+    expect(component.form.controls.address.valid).toBeTruthy();
+    expect(component.form.controls.dateOfBirth.valid).toBeTruthy();
+    expect(component.form.controls.gender.valid).toBeTruthy();
+    expect(component.form.controls.select.valid).toBeTruthy();
+    expect(component.form.controls.email.valid).toBeTruthy();
+    expect(component.form.controls.toggle.valid).toBeTruthy();
+    // call method submit
+    component.submit();
+    // check form field - they must be empty
+    expect(component.form.controls.firstName.value).toEqual(null);
+    expect(component.form.controls.lastName.value).toEqual(null);
+    expect(component.form.controls.address.value).toEqual(null);
+    expect(component.form.controls.dateOfBirth.value).toEqual(null);
+    expect(component.form.controls.gender.value).toEqual(null);
+    expect(component.form.controls.select.value).toEqual(null);
+    expect(component.form.controls.email.value).toEqual(null);
+    expect(component.form.controls.toggle.value).toEqual(null);
+  });
 });
