@@ -1,0 +1,51 @@
+<mat-card class="m-4">
+  <!--  form -->
+  <mat-card class="m-4 bg-clr">
+    <div class="example-container" [formGroup]="formLogin">
+      <!-- email-->
+      <div class="text-center">
+        <mat-form-field class="w-50">
+          <input matInput placeholder="email" required formControlName="email">
+          <mat-error *ngIf="formLogin.controls.email.invalid">
+            {{ CheckError(formLogin.controls.email) }}
+          </mat-error>
+          <mat-hint>use like : demo@demo.com</mat-hint>
+        </mat-form-field>
+      </div>
+      <!-- password-->
+      <div class="text-center">
+        <mat-form-field class="w-50">
+          <input matInput placeholder="password" required formControlName="password" type="password">
+          <mat-error *ngIf="formLogin.controls.password.invalid">
+            {{ CheckError(formLogin.controls.password) }}
+          </mat-error>
+        </mat-form-field>
+      </div>
+<!--btn login-->
+      <mat-card-actions class="text-center">
+        <div>
+          <button type="button" class="btn btn-lg pad-btn" (click)="login()">
+            <p>Login</p>
+          </button>
+        </div>
+      </mat-card-actions>
+    </div>
+  </mat-card>
+
+
+  <mat-card-actions class="text-center">
+    <!--    // email, pass-->
+    <!--    // .navigate()-->
+<!--    <div>-->
+<!--      <button type="button" class="btn btn-lg pad-btn" [routerLink]="['/form']">-->
+<!--        <p class="">Login</p>-->
+<!--      </button>-->
+<!--    </div>-->
+    <div>
+      <button type="button" class="btn btn-lg mt-4 pad-btn" [routerLink]="['/lazy']">
+        <p class="">run</p>
+      </button>
+    </div>
+  </mat-card-actions>
+  <router-outlet></router-outlet>
+</mat-card>

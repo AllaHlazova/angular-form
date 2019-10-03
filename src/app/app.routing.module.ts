@@ -1,22 +1,28 @@
 import {NgModule} from '@angular/core';
 import {Route, RouterModule} from '@angular/router';
 import {FormComponent} from './form/form.component';
-import {HeaderBtnComponent} from './header-btn/header-btn.component';
+import {LoginComponent} from './login/login.component';
+import {AuthGuard} from './auth.guard';
 
 
 const ROUTERS: Route[] = [
   {
     path: '',
-    redirectTo: 'open-form',
+    redirectTo: 'login',
     pathMatch: 'full'
   },
   {
-    path: 'open-form',
-    component: HeaderBtnComponent,
+    path: 'login',
+    component: LoginComponent,
   },
   {
     path: 'form',
+    canActivate: [AuthGuard],
     component: FormComponent,
+  },
+  {
+    path: 'lazy',
+    loadChildren: () => import('./lazy/lazy.module').then(mod => mod.LazyModule)
   }
 ];
 @NgModule({

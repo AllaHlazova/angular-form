@@ -4,7 +4,6 @@ import {NgModule} from '@angular/core';
 import {AppComponent} from './app.component';
 import {FormComponent} from './form/form.component';
 import {DialogComponent} from './dialog/dialog.component';
-import {HeaderBtnComponent} from './header-btn/header-btn.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {AppRoutingModule} from './app.routing.module';
 
@@ -20,6 +19,7 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatButtonModule} from '@angular/material/button';
+import { LoginComponent } from './login/login.component';
 
 const modules = [
   ReactiveFormsModule,
@@ -40,8 +40,8 @@ const modules = [
   declarations: [
     AppComponent,
     FormComponent,
-    HeaderBtnComponent,
     DialogComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
