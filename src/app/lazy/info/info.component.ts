@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {ListService} from '../list.service';
+import {Users} from '../users';
 
 @Component({
   selector: 'app-info',
@@ -6,10 +8,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./info.component.scss']
 })
 export class InfoComponent implements OnInit {
+  usersList: Users[] = [];
 
-  constructor() { }
+  constructor(public httpService: ListService) { }
 
   ngOnInit() {
+    // request to server
+    this.httpService.getData().subscribe((data: { data: Users[] }) => {
+      this.usersList = data.data;
+      console.log(this.usersList);
+    });
   }
-
 }

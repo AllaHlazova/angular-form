@@ -3,6 +3,7 @@ import {Route, RouterModule} from '@angular/router';
 import {FormComponent} from './form/form.component';
 import {LoginComponent} from './login/login.component';
 import {AuthGuard} from './auth.guard';
+import {SecAuthGuard} from './sec-auth.guard';
 
 
 const ROUTERS: Route[] = [
@@ -13,6 +14,7 @@ const ROUTERS: Route[] = [
   },
   {
     path: 'login',
+    canActivate: [ SecAuthGuard ],
     component: LoginComponent,
   },
   {
@@ -22,6 +24,7 @@ const ROUTERS: Route[] = [
   },
   {
     path: 'lazy',
+    canActivate: [AuthGuard],
     loadChildren: () => import('./lazy/lazy.module').then(mod => mod.LazyModule)
   }
 ];

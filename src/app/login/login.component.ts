@@ -50,7 +50,8 @@ export class LoginComponent implements OnInit {
     } else {
       const uuid1 = uuid.v4();
       // console.log(uuid1);
-      localStorage.id = `id= ${uuid1}`;
+      // localStorage.id = `id= ${uuid1}`;
+      localStorage.setItem('id', uuid1);
       console.log(localStorage.id);
       this.router.navigate(['/form']);
     }

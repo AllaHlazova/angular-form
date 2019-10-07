@@ -6,19 +6,19 @@ import {AuthService} from './services/auth.service';
 @Injectable({
   providedIn: 'root'
 })
-export class AuthGuard implements CanActivate {
-
-  constructor(public authService: AuthService, public router: Router) {
-  }
+export class SecAuthGuard implements CanActivate {
+  constructor(public authService: AuthService, public router: Router) {}
 
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    const id = localStorage.getItem('id');
-    // console.log(id);
-    if (!id) {
-      this.router.navigate(['/login']);
+    // if auth user tries to go to `login` route
+    if (this.authService.isAuthorization()) {
+      this.router.navigate(['/form']);
+      return false;
     }
-    return this.authService.isAuthorization();
+    // if non-auth user tries to go to `login` route
+    // to allow user to to go to this route
+    return true;
   }
 }

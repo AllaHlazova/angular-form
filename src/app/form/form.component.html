@@ -87,12 +87,9 @@
 
 <!--btn-->
     <div class="text-center p-2">
-      <button type="button" class="btn px-2 mr-5 mt-2" mat-button (click)="submit()">
-        <a class="p-3">Submit</a>
-      </button>
-      <button type="button" class="btn px-2 mt-2" mat-button (click)="openDialog()">
-        <a class="p-3">Cancel</a>
-      </button>
+      <button type="button" class="btn py-2 px-4 m-2" mat-button (click)="submit()"> Submit </button>
+      <button type="button" class="btn py-2 px-4 m-2" mat-button (click)="openDialog()"> Cancel </button>
+      <button type="button" class="btn py-2 px-4 m-2" mat-button [routerLink]="['/lazy']"> List users </button>
     </div>
   </div>
 </mat-card>

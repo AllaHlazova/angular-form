@@ -9,7 +9,5 @@ export class LazyComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit() {
-  }
-
+  ngOnInit() {}
 }

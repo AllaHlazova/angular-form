@@ -10,6 +10,6 @@ export class AuthService {
   }
 
   isAuthorization() {
-    return of(!!localStorage.id.value);
+    return !!localStorage.getItem('id');
   }
 }

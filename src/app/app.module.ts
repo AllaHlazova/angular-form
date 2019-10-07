@@ -20,6 +20,8 @@ import {MatNativeDateModule} from '@angular/material';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatButtonModule} from '@angular/material/button';
 import { LoginComponent } from './login/login.component';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
+import {InterceptorService} from './services/interceptor.service';
 
 const modules = [
   ReactiveFormsModule,
@@ -47,12 +49,17 @@ const modules = [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    modules
+    modules,
+    HttpClientModule
   ],
   exports: [
     modules
   ],
-  providers: [],
+  providers: [{
+    provide: HTTP_INTERCEPTORS,
+    useClass: InterceptorService,
+    multi: true
+  }],
   bootstrap: [AppComponent],
   entryComponents: [DialogComponent]
 })
