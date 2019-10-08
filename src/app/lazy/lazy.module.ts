@@ -7,6 +7,7 @@ import {MatListModule} from '@angular/material/list';
 import {HttpClientModule} from '@angular/common/http';
 import {InfoUserComponent} from './info/info-user/info-user.component';
 import {MatDividerModule} from '@angular/material';
+import {TitlePipe} from '../pipe/pipe';
 
 @NgModule({
   imports: [
@@ -17,6 +18,6 @@ import {MatDividerModule} from '@angular/material';
     MatDividerModule,
 ],
   exports: [ MatListModule],
-  declarations: [LazyComponent, InfoComponent, InfoUserComponent]
+  declarations: [LazyComponent, InfoComponent, InfoUserComponent, TitlePipe]
 })
 export class LazyModule { }
