@@ -1,7 +1,7 @@
 <mat-list-item *ngIf="userInfo" class="bg-div">
   <div class="m-3" mat-line>{{'id: ' + userInfo.id}}</div>
   <div class="m-3" mat-line>{{'email: ' + userInfo?.email}}</div>
-  <div class="m-3" mat-line>{{ userInfo?.first_name | titlePipe }}</div>
+  <div class="m-3" mat-line>{{ userInfo?.first_name | titlePipe:'some text'}}</div>
   <div class="m-3" mat-line>{{'last name: ' + userInfo?.last_name}}</div>
   <div class="m-3" mat-line>
     <img [src]="userInfo?.avatar" alt="avatar">

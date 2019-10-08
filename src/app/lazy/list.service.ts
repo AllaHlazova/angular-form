@@ -11,7 +11,7 @@ import {Users} from './users';
 export class ListService {
 
   constructor(private http: HttpClient) {}
-
+  // request to server
   public getData(): Observable<{data: Users[]}> {
     return this.http.get( 'https://reqres.in/api/users?page=2') as Observable<{data: Users[]}>;
   }
