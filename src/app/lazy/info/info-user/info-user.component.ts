@@ -8,9 +8,8 @@ import {Users} from '../../users';
 })
 export class InfoUserComponent implements OnInit {
   @Input() userInfo: Users;
-  constructor() { }
 
-  ngOnInit() {
-  }
+  constructor() {}
 
+  ngOnInit() {}
 }

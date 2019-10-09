@@ -8,7 +8,7 @@ import {Users} from '../users';
   styleUrls: ['./info.component.scss']
 })
 export class InfoComponent implements OnInit {
-  usersList: Users[] = [];
+  public usersList: Users[] = [];
 
   constructor(public httpService: ListService) { }
 
