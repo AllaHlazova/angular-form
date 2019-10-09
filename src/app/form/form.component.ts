@@ -24,6 +24,9 @@ export class FormComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
+      if (result === true) {
+        this.form.reset();
+      }
       console.log(result);
     });
   }
