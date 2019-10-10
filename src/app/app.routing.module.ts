@@ -5,7 +5,6 @@ import {LoginComponent} from './login/login.component';
 import {AuthGuard} from './auth.guard';
 import {SecAuthGuard} from './sec-auth.guard';
 
-
 const ROUTERS: Route[] = [
   {
     path: '',
@@ -14,7 +13,7 @@ const ROUTERS: Route[] = [
   },
   {
     path: 'login',
-    canActivate: [ SecAuthGuard ],
+    canActivate: [SecAuthGuard],
     component: LoginComponent,
   },
   {

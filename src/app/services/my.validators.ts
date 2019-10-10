@@ -1,6 +1,5 @@
 import {FormControl} from '@angular/forms';
 
-
 export class MyValidators {
 
   static forbiddenEmail(control: FormControl): { [key: string]: boolean } {

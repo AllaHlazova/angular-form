@@ -1,6 +1,6 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {LazyComponent} from './test/lazy.component';
+import {ListUserComponent} from './list-user/list-user.component';
 import {LazyRoutingModule} from './lazy-routing.module';
 import {InfoComponent} from './info/info.component';
 import {MatListModule} from '@angular/material/list';
@@ -18,6 +18,6 @@ import {TitlePipe} from '../pipe/title.pipe';
     MatDividerModule,
 ],
   exports: [MatListModule],
-  declarations: [LazyComponent, InfoComponent, InfoUserComponent, TitlePipe]
+  declarations: [ListUserComponent, InfoComponent, InfoUserComponent, TitlePipe]
 })
 export class LazyModule { }

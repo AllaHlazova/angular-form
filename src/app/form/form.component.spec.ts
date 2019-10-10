@@ -1,5 +1,4 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
-
 import {FormComponent} from './form.component';
 import {FormControl, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
 import {
@@ -74,7 +73,6 @@ describe('FormComponent', () => {
     a.markAsTouched();
     a.updateValueAndValidity();
     const result = component.myFunc(a);
-    // console.log(a.errors);
     expect(result).toEqual('');
   });
 

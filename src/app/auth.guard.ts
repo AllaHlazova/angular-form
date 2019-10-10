@@ -8,14 +8,12 @@ import {AuthService} from './services/auth.service';
 })
 export class AuthGuard implements CanActivate {
 
-  constructor(public authService: AuthService, public router: Router) {
-  }
+  constructor(private authService: AuthService, private router: Router) {}
 
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     const id = localStorage.getItem('id');
-    // console.log(id);
     if (!id) {
       this.router.navigate(['/login']);
     }

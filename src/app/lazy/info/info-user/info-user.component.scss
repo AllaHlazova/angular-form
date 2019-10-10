@@ -1,6 +1,23 @@
-.bg-div:nth-child(even){
-  background-color: #f2f2f2;
+::ng-deep .mat-list-item-content{
+  padding: 0 !important;
+  display: block !important;
+  font-size: 1.4rem !important;
+  font-family: Georgia, 'Times New Roman', Times, serif !important;
 }
-.bg-div:hover{
-  background-color: #ddd;
+
+.mat-line {
+  font-size: 1.4rem!important;
 }
+
+
+//.font-st{
+//  font-size: 1.4rem;
+//  font-family: Georgia, 'Times New Roman', Times, serif;
+//}
+
+
+
+
+
+
+

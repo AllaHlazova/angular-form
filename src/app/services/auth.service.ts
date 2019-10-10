@@ -5,8 +5,7 @@ import {Injectable} from '@angular/core';
 })
 export class AuthService {
 
-  constructor() {
-  }
+  constructor() {}
 
   isAuthorization() {
     return !!localStorage.getItem('id');

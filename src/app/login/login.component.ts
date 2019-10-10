@@ -10,10 +10,9 @@ import * as uuid from 'uuid';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(public router: Router) {
-  }
-
   public formLogin: FormGroup;
+
+  constructor(public router: Router) {}
 
   ngOnInit() {
     this.formLogin = new FormGroup({
@@ -50,7 +49,6 @@ export class LoginComponent implements OnInit {
     } else {
       const uuid1 = uuid.v4();
       localStorage.setItem('id', uuid1);
-      console.log(localStorage.id);
       this.router.navigate(['/form']);
     }
   }

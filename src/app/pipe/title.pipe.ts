@@ -11,8 +11,6 @@ export class TitlePipe implements PipeTransform {
   transform(firstName: string, params?: any): string {
     if (firstName) {
       return Str + firstName + params;
-    } else {
-      console.log('smt went wrong');
     }
   }
 }

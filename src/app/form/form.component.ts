@@ -2,7 +2,6 @@ import {Component, OnInit} from '@angular/core';
 import {DialogComponent} from '../dialog/dialog.component';
 import {MatDialog} from '@angular/material';
 import {AbstractControl, FormControl, FormGroup, Validators} from '@angular/forms';
-import {Router} from '@angular/router';
 import {MyValidators} from '../services/my.validators';
 
 @Component({
@@ -12,27 +11,11 @@ import {MyValidators} from '../services/my.validators';
 })
 export class FormComponent implements OnInit {
 
-  constructor(public dialog: MatDialog, public router: Router) {
-  }
-
   public form: FormGroup;
 
-  // dialog
-  openDialog(): void {
-    const dialogRef = this.dialog.open(DialogComponent, {
-      width: '450px'
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      if (result === true) {
-        this.form.reset();
-      }
-      console.log(result);
-    });
-  }
+  constructor(private dialog: MatDialog) {}
 
   ngOnInit() {
-
     this.form = new FormGroup({
       firstName: new FormControl('', [Validators.minLength(2),
         Validators.required, MyValidators.onlyLetters]),
@@ -47,7 +30,6 @@ export class FormComponent implements OnInit {
       toggle: new FormControl('', Validators.required)
     });
   }
-
 
   myFunc(control: AbstractControl): string {
     let errorText = '';
@@ -71,6 +53,19 @@ export class FormComponent implements OnInit {
       }
     }
     return errorText;
+  }
+
+  // dialog
+  openDialog(): void {
+    const dialogRef = this.dialog.open(DialogComponent, {
+      width: '450px'
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result === true) {
+        this.form.reset();
+      }
+    });
   }
 
   submit() {

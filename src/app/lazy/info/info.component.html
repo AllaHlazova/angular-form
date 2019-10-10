@@ -1,6 +1,7 @@
-<mat-list>
+<mat-list style="max-width:600px;margin: auto;padding-top: 0">
   <ng-container *ngFor="let info of usersList">
-    <app-info-user [userInfo]="info"></app-info-user>
+    <div class="cards">
+      <app-info-user [userInfo]="info"></app-info-user>
+    </div>
   </ng-container>
 </mat-list>
-

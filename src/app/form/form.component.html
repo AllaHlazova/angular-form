@@ -1,6 +1,5 @@
 <mat-card class="m-main max-width">
   <div class="example-container" [formGroup]="form">
-
     <!-- First Name-->
     <div class="d-flex">
       <mat-form-field class="w-50 p-2">
@@ -9,7 +8,6 @@
           {{ myFunc(form.controls.firstName) }}
         </mat-error>
       </mat-form-field>
-
       <!-- Last Name-->
       <mat-form-field class="w-50 p-2">
         <input matInput placeholder="Last Name" required formControlName="lastName">
@@ -18,7 +16,6 @@
         </mat-error>
       </mat-form-field>
     </div>
-
     <!--  Address-->
     <div>
       <mat-form-field class="p-2 w-100">
@@ -28,7 +25,6 @@
         </mat-error>
       </mat-form-field>
     </div>
-
     <!--  Date of birth-->
     <mat-form-field class="p-2 w-100">
       <input matInput [matDatepicker]="picker" placeholder="Date of birth" required formControlName="dateOfBirth">
@@ -38,7 +34,6 @@
       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
       <mat-datepicker #picker></mat-datepicker>
     </mat-form-field>
-
     <!--  Select-->
     <div class="d-flex">
       <div class="w-50">
@@ -65,7 +60,6 @@
         </mat-form-field>
       </div>
     </div>
-
     <!--  Email-->
     <div class="p-2">
       <mat-form-field class="w-100">
@@ -76,7 +70,6 @@
         <mat-hint>use like : demo@demo.com</mat-hint>
       </mat-form-field>
     </div>
-
     <!-- toggle-->
     <div>
       <mat-slide-toggle color="warn" required formControlName="toggle">Accept Terms & Conditions</mat-slide-toggle>
@@ -84,7 +77,6 @@
         {{ myFunc(form.controls.toggle) }}
       </mat-error>
     </div>
-
     <!--btn-->
     <div class="text-center p-2">
       <button type="button" class="btn py-2 px-4 m-2" mat-button (click)="submit()"> Submit</button>

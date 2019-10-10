@@ -1,0 +1,48 @@
+.max-width{
+  max-width: 20rem;
+}
+a.animated-button:link, a.animated-button:visited {
+  position: relative;
+  display: block;
+  margin: 3rem auto 0;
+  padding: 1.4rem 1.5rem;
+  color: #fff;
+  font-size: 1rem;
+  border-radius: 0.2rem;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  overflow: hidden;
+  letter-spacing: .06em;
+  text-shadow: 0 0 1px rgba(0, 0, 0, 0.1), 0 1px 0 rgba(0, 0, 0, 0.1);
+  transition: all 2s ease;
+}
+a.animated-button:link:after, a.animated-button:visited:after {
+  content: "";
+  position: absolute;
+  height: 0%;
+  left: 50%;
+  top: 50%;
+  width: 150%;
+  z-index: -1;
+  transition: all 0.8s ease 0s;
+}
+a.animated-button:link:hover, a.animated-button:visited:hover {
+  color: #FFF;
+  text-shadow: none;
+}
+a.animated-button:link:hover:after, a.animated-button:visited:hover:after {
+  height: 450%;
+}
+a.animated-button.class-btn {
+  border: 2px solid #7850cc;
+  color: rgb(239, 186, 222);
+}
+a.animated-button.class-btn:after {
+  background: #7850cc;
+  transform: translateX(-50%) translateY(-50%) rotate(-25deg);
+}
+
+
+

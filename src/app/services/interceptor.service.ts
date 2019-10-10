@@ -8,11 +8,10 @@ import {Observable} from 'rxjs';
 
 export class InterceptorService implements HttpInterceptor {
 
-  constructor() {
-  }
+  constructor() {}
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-// get our id
+    // get our id
     const id = localStorage.getItem('id');
     if (id) {
       // added id to headers
