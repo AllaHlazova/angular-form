@@ -1,17 +1,30 @@
 .cards {
+  $colourEnd: #f8f9fa 80%;
+  margin: 2rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, .25);
+  &:hover {
+    background-position: right center; /* change the direction of the change here */
+    transition: ease-out 2s;
+    transform: scale(1.02);
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.25), 0 1rem 1rem rgba(0, 0, 0, 0.22);
+  }
   &:nth-child(1n) {
-    background-image: linear-gradient(to right, #f6d365 0%, #fda085 51%, #f6d365 100%);
+    background-image: linear-gradient(to right, #f6d3654f 0%, #fda0856e 30%, $colourEnd);
   }
   &:nth-child(2n) {
-    background-image: linear-gradient(to right, #fbc2eb 0%, #a6c1ee 51%, #fbc2eb 100%);
+    background-image: linear-gradient(to right, #fbc2eb4a 0%, #a6c1ee8c 30%, $colourEnd);
   }
   &:nth-child(3n) {
-    background-image: linear-gradient(to right, #84fab0 0%, #8fd3f4 51%, #84fab0 100%);
+    background-image: linear-gradient(to right, #84fab04a 0%, #8fd3f45c 30%, $colourEnd);
   }
   &:nth-child(4n) {
-    background-image: linear-gradient(to right, #a1c4fd 0%, #c2e9fb 51%, #a1c4fd 100%);
+    background-image: linear-gradient(to right, #a1c4fd4a 0%, #c2e9fbc4 30%, $colourEnd);
   }
   &:nth-child(5n) {
-    background-image: linear-gradient(to right, #ffecd2 0%, #fcb69f 51%, #ffecd2 100%);
+    background-image: linear-gradient(to right, #ffecd247 0%, #fcb69f66 30%, $colourEnd);
   }
 }
+.max-width {
+  max-width: 700px;
+}
+

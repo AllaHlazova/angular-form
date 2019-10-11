@@ -6,7 +6,7 @@ import {InfoComponent} from './info/info.component';
 import {MatListModule} from '@angular/material/list';
 import {HttpClientModule} from '@angular/common/http';
 import {InfoUserComponent} from './info/info-user/info-user.component';
-import {MatDividerModule} from '@angular/material';
+import {MatDividerModule, MatIconModule} from '@angular/material';
 import {TitlePipe} from '../pipe/title.pipe';
 
 @NgModule({
@@ -16,7 +16,8 @@ import {TitlePipe} from '../pipe/title.pipe';
     MatListModule,
     HttpClientModule,
     MatDividerModule,
-],
+    MatIconModule
+  ],
   exports: [MatListModule],
   declarations: [ListUserComponent, InfoComponent, InfoUserComponent, TitlePipe]
 })

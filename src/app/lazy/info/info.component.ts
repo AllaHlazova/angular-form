@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {ListService} from '../list.service';
-import {Users} from '../users';
+import {ListService} from '../list-user/list.service';
+import {Users} from '../list-user/users';
 
 @Component({
   selector: 'app-info',
