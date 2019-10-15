@@ -11,7 +11,7 @@
 
 ![user-list](src/assets/user-list.png)
 
-![video-lazy-component](src/assets/video-lazy-component.mov)
+![video-lazy-component](src/assets/video-lazy-component.gif)
 
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.0.
